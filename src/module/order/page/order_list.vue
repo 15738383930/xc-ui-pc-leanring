@@ -13,7 +13,7 @@
             <div class="item" v-for="order in orderList">
               <div class="time-orderid"><span>{{order.startTime| formatDate}}</span> 订单号：{{order.orderNumber}}</div>
               <div class="item-content">
-                <div class="item-left col-lg-2"><img v-if="courseMap[order.xcOrdersDetails[0].itemId] && courseMap[order.xcOrdersDetails[0].itemId].pic" :src="'http://img.xuecheng.com/'+JSON.parse(courseMap[order.xcOrdersDetails[0].itemId].pic)[0]" width="100%" alt="" ></div>
+                <div class="item-left col-lg-2"><img v-if="courseMap[order.xcOrdersDetails[0].itemId] && courseMap[order.xcOrdersDetails[0].itemId].pic" :src="'http://img.zhou.com/'+JSON.parse(courseMap[order.xcOrdersDetails[0].itemId].pic)[0]" width="100%" alt="" ></div>
                 <div class="item-cent col-lg-4">
                   <div class="title" v-for="orderDetail in order.xcOrdersDetails" v-if="courseMap[orderDetail.itemId] && courseMap[orderDetail.itemId].name">{{courseMap[orderDetail.itemId].name}}</div>
                   <!--<div class="star-show">

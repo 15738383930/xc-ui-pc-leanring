@@ -580,7 +580,40 @@
       this.chapter = this.$route.params.chapter
       //取出课程Id
       systemApi.course_view(this.courseId).then((view_course)=>{
+          if(!view_course || !view_course[this.courseId]){
+              this.$message.error("获取课程信息失败")
+              return ;
+          }
+          //根据课程id拿到课程信息
+          let courseInfo = view_course[this.courseId];
+          //取出teachplan的串
+          let teachplanString = courseInfo.teachplan;
+          //把串转成对象
+          let teachplanObj = JSON.parse(teachplanString);
 
+          //取到课程计划
+          this.teachplanList = teachplanObj.children;
+          console.log(this.teachplanList)
+          //如果课程计划id不等于0，直接插入该课程计划对应的视频
+          if(this.chapter != '0'){
+              //获取该课程计划所对应的视频
+              this.study(this.chapter)
+          }else{
+              //找到该课程的二级课程计划中的第一个课程计划id，取出该课程计划所对应的视频
+              for(var i=0;i<this.teachplanList.length;i++){
+                  let firstTeachplan = this.teachplanList[i];
+                  if(firstTeachplan.children && firstTeachplan.children.length>0){
+                      //取出二级课程计划中第一个
+                      let secondTeachplan = firstTeachplan.children[0];
+                      //课程计划的id
+                      let teachplanId = secondTeachplan.id;
+                      //取出该课程计划所对应的视频
+                      // alert(teachplanId)
+                      this.study(teachplanId)
+                      return ;
+                  }
+              }
+          }
 
       })
     },

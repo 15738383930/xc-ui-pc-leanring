@@ -94,13 +94,13 @@ router.beforeEach((to, from, next) => {
           next();
         }else{
           //跳转到统一登陆
-          window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+          window.location = "http://ucenter.zhou.com/#/login?returnUrl="+ Base64.encode(window.location)
           next();
         }
       })
     }else{
       //跳转到统一登陆
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+      window.location = "http://ucenter.zhou.com/#/login?returnUrl="+ Base64.encode(window.location)
       next();
     }
   }else{
@@ -155,7 +155,7 @@ axios.interceptors.response.use(data => {
       //   path: '/login',
       //   query: {returnUrl: Base64.encode(window.location)}
       // })
-      window.location = "http://ucenter.xuecheng.com/#/login?returnUrl="+ Base64.encode(window.location)
+      window.location = "http://ucenter.zhou.com/#/login?returnUrl="+ Base64.encode(window.location)
     }else if(data.data.code && data.data.code =='10002'){
       Message.error('您没有此操作的权限，请与客服联系！');
     }else if(data.data.code && data.data.code =='10003'){

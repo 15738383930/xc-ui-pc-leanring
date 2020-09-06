@@ -25,7 +25,7 @@ module.exports = {
       },
       '/api': {
         target: 'http://127.0.0.1:50201',
-        //target: 'http://api.xuecheng.com',
+        //target: 'http://api.zhou.com',
         //pathRewrite: {"^/api" : "/"}
 
       },
